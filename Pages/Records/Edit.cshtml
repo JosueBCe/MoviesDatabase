@@ -1,0 +1,60 @@
+﻿@page
+@model MoviesDatabase.Pages.Movies.EditModel
+
+@{
+    ViewData["Scripture"] = "Edit";
+}
+
+<h1>Edit</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Movie.ID" />
+            <div class="form-group">
+                <label asp-for="Movie.Scripture" class="control-label"></label>
+                <input asp-for="Movie.Scripture" class="form-control" />
+                <span asp-validation-for="Movie.Scripture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.CreationDate" class="control-label"></label>
+                <input asp-for="Movie.CreationDate" class="form-control" />
+                <span asp-validation-for="Movie.CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Book" class="control-label"></label>
+                <input asp-for="Movie.Book" class="form-control" />
+                <span asp-validation-for="Movie.Book" class="text-danger"></span>
+            </div>
+         @*    <div class="form-group">
+                <label asp-for="Movie.Price" class="control-label"></label>
+                <input asp-for="Movie.Price" class="form-control" />
+                <span asp-validation-for="Movie.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Rating" class="control-label"></label>
+                <input asp-for="Movie.Rating" class="form-control" />
+                <span asp-validation-for="Movie.Rating" class="text-danger"></span>
+            </div> *@
+            <div class="row mt-3">
+                <div class="form-group col-3 col-md-4 mx-md-2">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                <div class="col-3 mx-md-2 col-md-4">
+                    <a asp-page="Index">
+                        <input type="button" class="btn btn-dark" value="Back to List" />
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* <div>
+    <a asp-page="./Index">Back to List</a>
+</div> *@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

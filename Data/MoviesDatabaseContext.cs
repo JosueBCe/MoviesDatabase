@@ -7,13 +7,13 @@ using MoviesDatabase.Models;
 
 namespace MoviesDatabase.Data
 {
-    public class MoviesDatabaseContext : DbContext
+    public class ScriptureJournalContext : DbContext
     {
-        public MoviesDatabaseContext (DbContextOptions<MoviesDatabaseContext> options)
+        public ScriptureJournalContext (DbContextOptions<ScriptureJournalContext> options)
             : base(options)
         {
         }
 
-        public DbSet<MoviesDatabase.Models.Movie> Movie { get; set; } = default!;
+        public DbSet<MoviesDatabase.Models.Scriptured> Scriptured { get; set; } = default!;
     }
 }

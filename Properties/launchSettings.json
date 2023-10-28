@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "MoviesDatabase": {
+    "ScriptureJournal": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

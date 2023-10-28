@@ -12,24 +12,24 @@ namespace MoviesDatabase.Pages.Movies
 {
     public class DeleteModel : PageModel
     {
-        private readonly MoviesDatabase.Data.MoviesDatabaseContext _context;
+        private readonly MoviesDatabase.Data.ScriptureJournalContext _context;
 
-        public DeleteModel(MoviesDatabase.Data.MoviesDatabaseContext context)
+        public DeleteModel(MoviesDatabase.Data.ScriptureJournalContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-      public Movie Movie { get; set; } = default!;
+      public Scriptured Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Movie == null)
+            if (id == null || _context.Scriptured == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.ID == id);
+            var movie = await _context.Scriptured.FirstOrDefaultAsync(m => m.ID == id);
 
             if (movie == null)
             {
@@ -44,16 +44,16 @@ namespace MoviesDatabase.Pages.Movies
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Movie == null)
+            if (id == null || _context.Scriptured == null)
             {
                 return NotFound();
             }
-            var movie = await _context.Movie.FindAsync(id);
+            var movie = await _context.Scriptured.FindAsync(id);
 
             if (movie != null)
             {
                 Movie = movie;
-                _context.Movie.Remove(Movie);
+                _context.Scriptured.Remove(Movie);
                 await _context.SaveChangesAsync();
             }
 

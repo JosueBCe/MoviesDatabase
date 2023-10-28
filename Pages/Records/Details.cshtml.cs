@@ -12,23 +12,23 @@ namespace MoviesDatabase.Pages.Movies
 {
     public class DetailsModel : PageModel
     {
-        private readonly MoviesDatabase.Data.MoviesDatabaseContext _context;
+        private readonly MoviesDatabase.Data.ScriptureJournalContext _context;
 
-        public DetailsModel(MoviesDatabase.Data.MoviesDatabaseContext context)
+        public DetailsModel(MoviesDatabase.Data.ScriptureJournalContext context)
         {
             _context = context;
         }
 
-      public Movie Movie { get; set; } = default!; 
+        public Scriptured Movie { get; set; } = default!; 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Movie == null)
+            if (id == null || _context.Scriptured == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.ID == id);
+            var movie = await _context.Scriptured.FirstOrDefaultAsync(m => m.ID == id);
             if (movie == null)
             {
                 return NotFound();

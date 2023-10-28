@@ -7,51 +7,23 @@ namespace MoviesDatabase.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new MoviesDatabaseContext(
+            using (var context = new ScriptureJournalContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<MoviesDatabaseContext>>()))
+                    DbContextOptions<ScriptureJournalContext>>()))
             {
                 // Look for any movies.
-                if (context.Movie.Any())
+                if (context.Scriptured.Any())
                 {
                     return;   // DB has been seeded
                 }
 
-                context.Movie.AddRange(
-                    new Movie
+                context.Scriptured.AddRange(
+                    new Scriptured
                     {
-                        Title = "When Harry Met Sally",
-                        ReleaseDate = DateTime.Parse("1989-2-12"),
-                        Genre = "Romantic Comedy",
-                        Price = 7.99M,
-                        Rating = "R"
-                    },
-
-                    new Movie
-                    {
-                        Title = "Ghostbusters ",
-                        ReleaseDate = DateTime.Parse("1984-3-13"),
-                        Genre = "Comedy",
-                        Price = 8.99M,
-                        Rating = "R"
-                    },
-
-                    new Movie
-                    {
-                        Title = "Ghostbusters 2",
-                        ReleaseDate = DateTime.Parse("1986-2-23"),
-                        Genre = "Comedy",
-                        Price = 9.99M,
-                         Rating = "R"
-                    },
-
-                    new Movie
-                    {
-                        Title = "Rio Bravo",
-                        ReleaseDate = DateTime.Parse("1959-4-15"),
-                        Genre = "Western",
-                        Price = 3.99M,
-                        Rating = "R"
+                        Scripture = "will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them",
+                        CreationDate= DateTime.Parse("1989-2-12"),
+                        Book = "1 Nephi 3:16"
+              
                     }
                 );
                 context.SaveChanges();

@@ -11,7 +11,7 @@ using MoviesDatabase.Data;
 
 namespace MoviesDatabase.Migrations
 {
-    [DbContext(typeof(MoviesDatabaseContext))]
+    [DbContext(typeof(ScriptureJournalContext))]
     [Migration("20231016233401_New_DataAnnotations")]
     partial class New_DataAnnotations
     {

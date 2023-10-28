@@ -1,0 +1,114 @@
+﻿@page "{searchString?}"
+@model MoviesDatabase.Pages.Movies.IndexModel
+
+@{
+    ViewData["Scripture"] = "Index";
+}
+<h1 >Records</h1>
+
+<div class="container"
+    <div class="row-cols-6">
+        <a asp-page="Create">
+        <input type="button" class="btn btn-dark my-3" value="📚 Add New Scripture Journal" />
+    </a>
+
+  </div>
+  
+
+
+
+<h2 class="mb-3 mt-4">Search Records</h2>
+<form class="row mb-2">
+  <div class="col-md-6 col-lg-4">
+    <div class="form-group">
+      <label for="searchString">Books:</label>
+      <select class="form-control" asp-for="MovieBook" asp-items="Model.Books">
+        <option value="">All</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <div class="form-group">
+      <label for="searchString">KeyWord:</label>
+      <input type="text" asp-for="SearchString" class="form-control" id="searchString" />
+    </div>
+  </div>
+  <div class="col-12 mt-2">
+    <button type="submit" class="btn btn-dark">Search</button>
+  </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Scripture)
+            </th>
+           <th>
+    <form>
+        <select class="form-control text-wrap px-1" asp-for="SortByDate" onchange="this.form.submit()">
+            <option value="ascending" data-toggle="tooltip" data-placement="top" title="@Html.DisplayNameFor(model => model.Movie[0].CreationDate) Ascending">
+                                @Html.DisplayNameFor(model => model.Movie[0].CreationDate) Ascending
+            </option>
+            <option value="descending" data-toggle="tooltip" data-placement="top" title="@Html.DisplayNameFor(model => model.Movie[0].CreationDate) Descending">
+                                @Html.DisplayNameFor(model => model.Movie[0].CreationDate) Descending
+            </option>
+        </select>
+    </form>
+</th>
+<th>
+    <form>
+        <select class="form-control text-wrap px-1" asp-for="SortByBook" onchange="this.form.submit()">
+            <option value="ascending" data-toggle="tooltip" data-placement="top" title="@Html.DisplayNameFor(model => model.Movie[0].Book) A - Z">
+                                @Html.DisplayNameFor(model => model.Movie[0].Book) A - Z
+            </option>
+            <option value="descending" data-toggle="tooltip" data-placement="top" title="@Html.DisplayNameFor(model => model.Movie[0].Book) Z - A">
+                                @Html.DisplayNameFor(model => model.Movie[0].Book) Z - A
+            </option>
+        </select>
+    </form>
+</th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie[0].Rating)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movie)
+        {
+            <tr >
+                <td class="px-0 p">
+                    "@Html.DisplayFor(modelItem => item.Scripture)"
+                </td>
+                    <td class="pe-0">
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                    <td class="px-0" >
+                    @Html.DisplayFor(modelItem => item.Book)
+                </td>
+               @*  <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td> *@
+                <td>
+                                     <a asp-page="./Edit"  asp-route-id="@item.ID" class=" text-decoration-none">
+                    <input type="button" class="btn btn-dark text-decoration-none" value="Edit" />
+        </a>
+                         <a asp-page="./Details" asp-route-id="@item.ID" class=" text-decoration-none">
+                    <input type="button" class="btn btn-success mt-1  text-decoration-none" value="Details" />
+        </a>
+                         <a asp-page="./Delete"  asp-route-id="@item.ID" class=" text-decoration-none">
+                    <input type="button" class="btn btn-danger mt-1  text-decoration-none" value="Delete" />
+        </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

@@ -3,16 +3,21 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Design;
 using MoviesDatabase.Data;
+
 using Microsoft.Extensions.Hosting;
 using MoviesDatabase.Models;
+
+// Create app 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<MoviesDatabaseContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MoviesDatabaseContext") ?? throw new InvalidOperationException("Connection string 'MoviesDatabaseContext' not found.")));
+// Connection to db 
+builder.Services.AddDbContext<ScriptureJournalContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ScriptureJournalContext") ?? throw new InvalidOperationException("Connection string 'ScriptureJournalContext' not found.")));
 
+// building 
 var app = builder.Build();
 
 
@@ -45,9 +50,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapRazorPages();
 
 app.Run();

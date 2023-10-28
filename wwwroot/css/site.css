@@ -1,12 +1,25 @@
 html {
-  font-size: 14px;
+    font-size: 13px;
+    font-family: 'Playpen Sans', cursive;
+}
+
+
+html, body {
+    font-family: 'Playpen Sans', cursive;
 }
 
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
+
+
 }
+
+.logo img {
+    width: 50px
+}
+
 
 html {
   position: relative;
@@ -16,3 +29,4 @@ html {
 body {
   margin-bottom: 60px;
 }
+
